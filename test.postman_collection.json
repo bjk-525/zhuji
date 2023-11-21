@@ -1,0 +1,2706 @@
+{
+	"info": {
+		"_postman_id": "a15d5570-8678-4edd-9d0b-577cc11e5568",
+		"name": "诸暨智慧园区项目-测试自动化",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26393199"
+	},
+	"item": [
+		{
+			"name": "招商情报",
+			"item": [
+				{
+					"name": "企业数据更新时间",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\",function(){\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"var data = JSON.parse(responseBody);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"area_id\":\"ZJ\",\r\n    \"module_id\": \"ZJMODULE002\",\r\n    \"page_size\": 9999,\r\n    \"rule_id\": \"ZJLYH0010\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/index/total?appId=A330681367032202303000001_1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"index",
+								"total"
+							],
+							"query": [
+								{
+									"key": "appId",
+									"value": "A330681367032202303000001_1"
+								}
+							]
+						},
+						"description": "企业情报页面列表"
+					},
+					"response": []
+				},
+				{
+					"name": "企业情报-获取企业情报列表",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\",function(){\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.environment.set(\"qyid\", responseJson.result.list[0].id);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": 1,\r\n    \"size\": 10,\r\n    \"sort\": \"DESC\",\r\n    \"field\": 1,\r\n    \"keyWord\": \"\",\r\n    \"chainLevel\": \"\",\r\n    \"levelFirst\": \"\",\r\n    \"labelLevelOne\": \"\",\r\n    \"dynamic\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/adsDedaPoifNews/page?appId=A330681367032202303000001_1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"adsDedaPoifNews",
+								"page"
+							],
+							"query": [
+								{
+									"key": "appId",
+									"value": "A330681367032202303000001_1"
+								}
+							]
+						},
+						"description": "企业情报，获取企业情报列表"
+					},
+					"response": []
+				},
+				{
+					"name": "企业情报-获取企业情报详情",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\",function(){\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.environment.unset(\"qyid\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/adsDedaPoifNews/detail?appId=A330681367032202303000001_1&adsDedaPoifNewsId={{qyid}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"adsDedaPoifNews",
+								"detail"
+							],
+							"query": [
+								{
+									"key": "appId",
+									"value": "A330681367032202303000001_1"
+								},
+								{
+									"key": "adsDedaPoifNewsId",
+									"value": "{{qyid}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取企业更新频率",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\",function(){\r",
+									"pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"area_id\": \"ZJ\",\r\n    \"index_id\": \"4a6ab1f71983fe4a3a2f4f2cc4d31e48\",\r\n    \"page_size\": 9999\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/index/list?appId=A330681367032202303000001_1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"index",
+								"list"
+							],
+							"query": [
+								{
+									"key": "appId",
+									"value": "A330681367032202303000001_1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "会议精选-获取会议列表",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\",function(){\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"var responseJson = pm.response.json();\r",
+									"pm.environment.set(\"hyid\", responseJson.result.list[0].id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"page\": 1,\r\n    \"size\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/adsDedaPoifMeeting/page?appId=A330681367032202303000001_1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"adsDedaPoifMeeting",
+								"page"
+							],
+							"query": [
+								{
+									"key": "appId",
+									"value": "A330681367032202303000001_1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "会议精选-获取会议详情",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\",function(){\r",
+									"pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.environment.unset(\"hyid\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/adsDedaPoifMeeting/detail?appId=A330681367032202303000001_1&adsDedaPoifMeetingId={{hyid}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"adsDedaPoifMeeting",
+								"detail"
+							],
+							"query": [
+								{
+									"key": "appId",
+									"value": "A330681367032202303000001_1"
+								},
+								{
+									"key": "adsDedaPoifMeetingId",
+									"value": "{{hyid}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "招商线索",
+			"item": [
+				{
+					"name": "企业速查",
+					"item": [
+						{
+							"name": "企业速查-获取企业列表",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var responseJson = pm.response.json();\r",
+											"pm.environment.set(\"company_code\",responseJson.result.list[0].company_code)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"page\": 1,\r\n    \"size\": 10,\r\n    \"total_score\": 0,\r\n    \"logType\": 1,\r\n    \"ability_level_desc\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/company/page?appId=A330681367032202303000001_1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"company",
+										"page"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-菜单项获取",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url_conpany}}/menu/list?appId=A330681367032202303000001_1&companyCode={{company_code}}&beginDate=2018-01-01&endDate=2022-12-31\n",
+									"host": [
+										"{{url_conpany}}"
+									],
+									"path": [
+										"menu",
+										"list"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										},
+										{
+											"key": "companyCode",
+											"value": "{{company_code}}"
+										},
+										{
+											"key": "beginDate",
+											"value": "2018-01-01"
+										},
+										{
+											"key": "endDate",
+											"value": "2022-12-31\n"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-股东信息",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"companyCode\": \"{{company_code}}\",\r\n    \"current\": 1,\r\n    \"pageSize\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_conpany}}/lget/company/sholder/page?appId=A330681367032202303000001_1",
+									"host": [
+										"{{url_conpany}}"
+									],
+									"path": [
+										"lget",
+										"company",
+										"sholder",
+										"page"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-基本信息",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"companyCode\": \"{{company_code}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_conpany}}/lget/company/info/findByCode?appId=A330681367032202303000001_1",
+									"host": [
+										"{{url_conpany}}"
+									],
+									"path": [
+										"lget",
+										"company",
+										"info",
+										"findByCode"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-主要成员",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"companyCode\": \"{{company_code}}\",\r\n    \"current\": 1,\r\n    \"pageSize\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_conpany}}/lget/company/team/page?appId=A330681367032202303000001_1",
+									"host": [
+										"{{url_conpany}}"
+									],
+									"path": [
+										"lget",
+										"company",
+										"team",
+										"page"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-核心团队",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"companyCode\": \"{{company_code}}\",\r\n    \"current\": 1,\r\n    \"pageSize\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_conpany}}/company/info/page?appId=A330681367032202303000001_1",
+									"host": [
+										"{{url_conpany}}"
+									],
+									"path": [
+										"company",
+										"info",
+										"page"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-变更记录",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"companyCode\": \"{{company_code}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_conpany}}/lget/company/change/fiveCount?appId=A330681367032202303000001_1",
+									"host": [
+										"{{url_conpany}}"
+									],
+									"path": [
+										"lget",
+										"company",
+										"change",
+										"fiveCount"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-变更详情",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"companyCode\": \"{{company_code}}\",\r\n    \"current\": 1,\r\n    \"pageSize\": 10,\r\n    \"beginDate\": \"2018-01-01\",\r\n    \"endDate\": \"2022-12-31\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_conpany}}/lget/company/change/fiveCount?appId=A330681367032202303000001_1",
+									"host": [
+										"{{url_conpany}}"
+									],
+									"path": [
+										"lget",
+										"company",
+										"change",
+										"fiveCount"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-融资历程",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"subjectCode\": \"{{company_code}}\",\r\n    \"current\": 1,\r\n    \"pageSize\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_conpany}}/lget/company/change/fiveCount?appId=A330681367032202303000001_1",
+									"host": [
+										"{{url_conpany}}"
+									],
+									"path": [
+										"lget",
+										"company",
+										"change",
+										"fiveCount"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-舆情动态分类",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"subjectCode\": \"{{company_code}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/company/eventTypeList?appId=A330681367032202303000001_1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"company",
+										"eventTypeList"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-舆情动态列表",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"subjectCode\": \"{{company_code}}\",\r\n    \"current\": 1,\r\n    \"pageSize\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/company/pageList?appId=A330681367032202303000001_1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"company",
+										"pageList"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-上榜榜单",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"subjectCode\": \"{{company_code}}\",\r\n    \"current\": 1,\r\n    \"pageSize\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_conpany}}/lget/company/qualification/pageList?appId=A330681367032202303000001_1",
+									"host": [
+										"{{url_conpany}}"
+									],
+									"path": [
+										"lget",
+										"company",
+										"qualification",
+										"pageList"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-招投标",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"subjectCode\": \"{{company_code}}\",\r\n    \"current\": 1,\r\n    \"pageSize\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_conpany}}/lget/bidding/publish/pageList?appId=A330681367032202303000001_1",
+									"host": [
+										"{{url_conpany}}"
+									],
+									"path": [
+										"lget",
+										"bidding",
+										"publish",
+										"pageList"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-设立分支机构",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"subjectCode\": \"{{company_code}}\",\r\n    \"current\": 1,\r\n    \"pageSize\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_conpany}}/lget/company/branch/pageList?appId=A330681367032202303000001_1",
+									"host": [
+										"{{url_conpany}}"
+									],
+									"path": [
+										"lget",
+										"company",
+										"branch",
+										"pageList"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-开庭公告",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"subjectCode\": \"{{company_code}}\",\r\n    \"current\": 1,\r\n    \"pageSize\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_conpany}}/lget/company/trial/notice/pageList?appId=A330681367032202303000001_1",
+									"host": [
+										"{{url_conpany}}"
+									],
+									"path": [
+										"lget",
+										"company",
+										"trial",
+										"notice",
+										"pageList"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-裁判文书",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"subjectCode\": \"{{company_code}}\",\r\n    \"current\": 1,\r\n    \"pageSize\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_conpany}}/lget/company/judgment/page?appId=A330681367032202303000001_1",
+									"host": [
+										"{{url_conpany}}"
+									],
+									"path": [
+										"lget",
+										"company",
+										"judgment",
+										"page"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-被执行人",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"subjectCode\": \"{{company_code}}\",\r\n    \"current\": 1,\r\n    \"pageSize\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_conpany}}/lget/company/executed/page?appId=A330681367032202303000001_1",
+									"host": [
+										"{{url_conpany}}"
+									],
+									"path": [
+										"lget",
+										"company",
+										"executed",
+										"page"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-专利信息",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"subjectCode\": \"{{company_code}}\",\r\n    \"current\": 1,\r\n    \"pageSize\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_conpany}}/lget/patent/info/pageList?appId=A330681367032202303000001_1",
+									"host": [
+										"{{url_conpany}}"
+									],
+									"path": [
+										"lget",
+										"patent",
+										"info",
+										"pageList"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-商标信息",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"subjectCode\": \"{{company_code}}\",\r\n    \"current\": 1,\r\n    \"pageSize\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_conpany}}/lget/brand/info/pageList?appId=A330681367032202303000001_1",
+									"host": [
+										"{{url_conpany}}"
+									],
+									"path": [
+										"lget",
+										"brand",
+										"info",
+										"pageList"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-软件著作权",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"subjectCode\": \"{{company_code}}\",\r\n    \"current\": 1,\r\n    \"pageSize\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_conpany}}/lget/software/copyright/pageList?appId=A330681367032202303000001_1",
+									"host": [
+										"{{url_conpany}}"
+									],
+									"path": [
+										"lget",
+										"software",
+										"copyright",
+										"pageList"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-资质证书",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"subjectCode\": \"{{company_code}}\",\r\n    \"current\": 1,\r\n    \"pageSize\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_conpany}}/lget/company/qualification/companyQualificationPage?appId=A330681367032202303000001_1",
+									"host": [
+										"{{url_conpany}}"
+									],
+									"path": [
+										"lget",
+										"company",
+										"qualification",
+										"companyQualificationPage"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业速查-获取企业详情-备案网站",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.environment.unset(\"company_code\")"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"subjectCode\": \"{{company_code}}\",\r\n    \"current\": 1,\r\n    \"pageSize\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url_conpany}}/lget/icp/record/info/pageList?appId=A330681367032202303000001_1",
+									"host": [
+										"{{url_conpany}}"
+									],
+									"path": [
+										"lget",
+										"icp",
+										"record",
+										"info",
+										"pageList"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "意向企业推荐",
+					"item": []
+				}
+			]
+		},
+		{
+			"name": "招商工作台",
+			"item": [
+				{
+					"name": "工作看版",
+					"item": [
+						{
+							"name": "工作看板-获取工作总览数据",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/board/work/overview?appId=A330681367032202303000001_1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"board",
+										"work",
+										"overview"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "工作看板-工作待办-我的项目",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/board/work/project?appId=A330681367032202303000001_1&page=1&size=3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"board",
+										"work",
+										"project"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "工作看板-项目提醒",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/board/work/remind?appId=A330681367032202303000001_1&page=1&size=3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"board",
+										"work",
+										"remind"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "工作看板-项目投资分布",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/board/work/investment?appId=A330681367032202303000001_1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"board",
+										"work",
+										"investment"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "工作看板-工作待办-领导交办",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/board/work/assigned?appId=A330681367032202303000001_1&page=1&size=3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"board",
+										"work",
+										"assigned"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "领导交办",
+					"item": [
+						{
+							"name": "领导交办-我的交办-新增交办",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"isCountry\": 1,\r\n    \"name\": \"新增测试交办test\",\r\n    \"companyName\": \"诸暨道奇汽车科技有限公司\",\r\n    \"companyCode\": \"4068e1eccaba3927d241768771d81468\",\r\n    \"contact\": \"4324\",\r\n    \"contactInformation\": \"15600000001\",\r\n    \"describe\": \"这是任务描述\",\r\n    \"dutyDeptId\": \"13b9497f-5aab-48c7-8c11-18d6dadd72f6\",\r\n    \"projectUserId\": \"8ff9d48f-a6b7-443d-b22e-29d465917104\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/zjAssigned/add?appId=A330681367032202303000001_1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"zjAssigned",
+										"add"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "领导交办-我的交办-我的交办列表",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"var responseJson = pm.response.json()\r",
+											"pm.environment.set(\"assignedId\", responseJson.result.list[0].assignedId)"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"page\": 1,\r\n    \"size\": 10,\r\n    \"type\": \"0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/zjAssigned/search/page?appId=A330681367032202303000001_1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"zjAssigned",
+										"search",
+										"page"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "领导交办-我的交办-我的交办详情",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"page\": 1,\r\n    \"size\": 10,\r\n    \"type\": \"0\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/zjAssigned/getById?appId=A330681367032202303000001_1&id={{assignedId}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"zjAssigned",
+										"getById"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										},
+										{
+											"key": "id",
+											"value": "{{assignedId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "领导交办-我的任务-我的任务列表",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var responseJson = pm.response.json()\r",
+											"pm.environment.set(\"assignedId\", responseJson.result.list[0].assignedId)\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"page\": 1,\r\n    \"size\": 10,\r\n    \"type\": \"1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/zjAssigned/search/page?appId=A330681367032202303000001_1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"zjAssigned",
+										"search",
+										"page"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "领导交办-我的任务-跟进",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"type\": \"接待\",\r\n    \"content\": \"进展描述测试\",\r\n    \"nextPlan\": \"下一步工作计划\",\r\n    \"progressTime\": \"2023-11-03 00:00:00\",\r\n    \"assignedId\": {{assignedId}}\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/zjAssignedProgress/add?appId=A330681367032202303000001_1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"zjAssignedProgress",
+										"add"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "领导交办-我的任务-关闭任务",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reason\": \"关闭任务测试\",\r\n    \"assignedId\": {{assignedId}}\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/zjAssigned/close?appId=A330681367032202303000001_1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"zjAssigned",
+										"close"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "领导交办-我的任务-跟进记录",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"page\": 1,\r\n    \"size\": 10,\r\n    \"assignedId\": {{assignedId}}\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/zjAssignedProgress/page?appId=A330681367032202303000001_1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"zjAssignedProgress",
+										"page"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "领导交办-我的任务-详情",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"page\": 1,\r\n    \"size\": 10,\r\n    \"assignedId\": {{assignedId}}\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/zjAssigned/getById?appId=A330681367032202303000001_1&id={{assignedId}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"zjAssigned",
+										"getById"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										},
+										{
+											"key": "id",
+											"value": "{{assignedId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "工作看板-领导交办-删除我的交办数据",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.environment.unset(\"assignedId\")\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/zjAssigned/delete?appId=A330681367032202303000001_1&id={{assignedId}}",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"zjAssigned",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										},
+										{
+											"key": "id",
+											"value": "{{assignedId}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "企业选址",
+					"item": [
+						{
+							"name": "企业选址-新增企业选址",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"result is success\",() =>{\r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson.message).to.eql(\"操作成功！\")\r",
+											"})\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"companyName\": \"新增测试企业选址数据\",\r\n    \"chainTypeHs\": [\r\n        \"生物医学\",\r\n        \"生命健康\",\r\n        \"装备制造\"\r\n    ],\r\n    \"concat\": \"张三\",\r\n    \"contactInformation\": \"15600000001\",\r\n    \"carrier\": \"写字楼\",\r\n    \"investmentScaleHs\": \"3000万~5000万\",\r\n    \"expectedSupport\": \"期望获得支持\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/zjEnterpriseSelection/add?appId=A330681367032202303000001_1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"zjEnterpriseSelection",
+										"add"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业选址-企业选址列表",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"var responseJson = pm.response.json()\r",
+											"pm.environment.set(\"enterpriseId\",responseJson.result.list[0].enterpriseId)\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"page\": 1,\r\n    \"size\": 10\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/zjEnterpriseSelection/page?appId=A330681367032202303000001_1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"zjEnterpriseSelection",
+										"page"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业选址-添加跟进记录",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\": \"测试跟进记录\",\r\n    \"projectUserId\": \"8ff9d48f-a6b7-443d-b22e-29d465917104\",\r\n    \"dutyDeptId\": \"13b9497f-5aab-48c7-8c11-18d6dadd72f6\",\r\n    \"enterpriseId\": {{enterpriseId}}\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/zjEnterpriseSelectionProgress/add?appId=A330681367032202303000001_1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"zjEnterpriseSelectionProgress",
+										"add"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业选址-修改企业选址信息",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"addByUserId\": \"-1\",\r\n    \"updateByUserId\": \"-1\",\r\n    \"addTime\": \"2023-11-15 15:48:09\",\r\n    \"updateTime\": \"2023-11-15 15:48:09\",\r\n    \"deleteFlag\": false,\r\n    \"enterpriseId\": {{enterpriseId}},\r\n    \"companyName\": \"新增测试企业选址数据\",\r\n    \"companyCode\": null,\r\n    \"concat\": \"张三\",\r\n    \"contactInformation\": \"15600000002\",\r\n    \"chainType\": \"生物医学,生命健康,装备制造\",\r\n    \"carrier\": \"园区\",\r\n    \"investmentScale\": null,\r\n    \"status\": \"跟进中\",\r\n    \"expectedSupport\": \"期望获得支持修改信息\",\r\n    \"reason\": null,\r\n    \"latestProgressTime\": \"2023-11-14 17:40:42\",\r\n    \"investmentScaleHs\": \"3000万~5000万\",\r\n    \"chainTypeHs\": [\r\n        \"生物医学\",\r\n        \"生命健康\",\r\n        \"装备制造\",\r\n        \"其他\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/zjEnterpriseSelection/update?appId=A330681367032202303000001_1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"zjEnterpriseSelection",
+										"update"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业选址-企业选址详情",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"enterpriseId\": {{enterpriseId}}\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/zjEnterpriseSelection/getById?appId=A330681367032202303000001_1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"zjEnterpriseSelection",
+										"getById"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "企业选址-删除企业选址信息",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\",function(){\r",
+											"pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.environment.unset(\"enterpriseId\")\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"type": "text",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"addByUserId\": \"-1\",\r\n    \"updateByUserId\": \"-1\",\r\n    \"addTime\": \"2023-11-15 15:56:34\",\r\n    \"updateTime\": \"2023-11-15 15:56:42\",\r\n    \"deleteFlag\": false,\r\n    \"enterpriseId\": {{enterpriseId}},\r\n    \"companyName\": \"新增测试企业选址数据\",\r\n    \"companyCode\": null,\r\n    \"concat\": \"张三\",\r\n    \"contactInformation\": \"15600000002\",\r\n    \"chainType\": \"生物医学,生命健康,装备制造,其他\",\r\n    \"carrier\": \"园区\",\r\n    \"investmentScale\": \"3000万~5000万\",\r\n    \"status\": \"跟进中\",\r\n    \"expectedSupport\": \"期望获得支持修改信息\",\r\n    \"reason\": null,\r\n    \"latestProgressTime\": \"2023-11-15 15:56:39\",\r\n    \"investmentScaleHs\": \"3000万~5000万\",\r\n    \"chainTypeHs\": [\r\n        \"生物医学\",\r\n        \"生命健康\",\r\n        \"装备制造\",\r\n        \"其他\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/zjEnterpriseSelection/delete?appId=A330681367032202303000001_1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"zjEnterpriseSelection",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "appId",
+											"value": "A330681367032202303000001_1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "公权力数据上报",
+			"item": []
+		},
+		{
+			"name": "系统设置",
+			"item": []
+		},
+		{
+			"name": "经济运行",
+			"item": []
+		},
+		{
+			"name": "产业分析",
+			"item": []
+		},
+		{
+			"name": "产业地图",
+			"item": []
+		}
+	]
+}
