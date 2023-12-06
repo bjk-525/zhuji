@@ -32,6 +32,11 @@
 								"key": "token",
 								"value": "{{token}}",
 								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -90,6 +95,11 @@
 								"key": "token",
 								"value": "{{token}}",
 								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -145,6 +155,11 @@
 								"key": "token",
 								"value": "{{token}}",
 								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -192,6 +207,11 @@
 							{
 								"key": "token",
 								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
 								"type": "text"
 							}
 						],
@@ -249,6 +269,11 @@
 								"key": "token",
 								"value": "{{token}}",
 								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -303,6 +328,11 @@
 							{
 								"key": "token",
 								"value": "{{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json; charset=UTF-8",
 								"type": "text"
 							}
 						],
@@ -363,6 +393,11 @@
 										"key": "token",
 										"value": "{{token}}",
 										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -411,7 +446,13 @@
 							],
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
+									}
+								],
 								"url": {
 									"raw": "{{url_conpany}}/menu/list?appId=A330681367032202303000001_1&companyCode={{company_code}}&beginDate=2018-01-01&endDate=2022-12-31\n",
 									"host": [
@@ -466,6 +507,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -521,6 +567,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -576,6 +627,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -631,6 +687,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -685,6 +746,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -740,6 +806,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -795,6 +866,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -850,6 +926,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -904,6 +985,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -958,6 +1044,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -1013,6 +1104,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -1068,6 +1164,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -1123,6 +1224,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -1179,6 +1285,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -1234,6 +1345,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -1289,6 +1405,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -1344,6 +1465,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -1399,6 +1525,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -1454,6 +1585,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -1509,6 +1645,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -1579,6 +1720,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"url": {
@@ -1625,6 +1771,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"url": {
@@ -1679,6 +1830,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"url": {
@@ -1733,6 +1889,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"url": {
@@ -1779,6 +1940,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"url": {
@@ -1838,6 +2004,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -1893,6 +2064,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -1951,6 +2127,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -2012,6 +2193,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -2067,6 +2253,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -2133,7 +2324,7 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/api/zjAssigned/close?appId=A330681367032202303000001_1",
+									"raw": "{{base_url}}/api/zjAssigned/close?appId=A330681367032202303000001_1&Content-Type=application/json; charset=UTF-8",
 									"host": [
 										"{{base_url}}"
 									],
@@ -2146,6 +2337,10 @@
 										{
 											"key": "appId",
 											"value": "A330681367032202303000001_1"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
 										}
 									]
 								}
@@ -2175,6 +2370,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -2232,6 +2432,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -2295,6 +2500,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -2364,6 +2574,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -2421,6 +2636,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -2477,6 +2697,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -2533,6 +2758,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -2589,6 +2819,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -2647,6 +2882,11 @@
 										"key": "token",
 										"type": "text",
 										"value": "{{token}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json; charset=UTF-8",
+										"type": "text"
 									}
 								],
 								"body": {
